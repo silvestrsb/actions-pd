@@ -49,10 +49,17 @@ jobs:
   deploy-to-staging:
     needs: [tests-on-dev]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print deploy-to-staging
         run: echo Deploying to staging
+      - name: Clone python-greetings
+        run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+      - name: Stop python-greetings app
+        run: |
+          cd python-greetings
+          pm2 delete greetings-app-staging  
   tests-on-staging:
     needs: [deploy-to-staging]
     runs-on: self-hosted
@@ -63,10 +70,17 @@ jobs:
   deploy-to-preprod:
     needs: [tests-on-staging]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print deploy-to-preprod
         run: echo Deploying to preprod
+      - name: Clone python-greetings
+        run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+      - name: Stop python-greetings app
+        run: |
+          cd python-greetings
+          pm2 delete greetings-app-preprod
   tests-on-preprod:
     needs: [deploy-to-preprod]
     runs-on: self-hosted
@@ -77,10 +91,17 @@ jobs:
   deploy-to-prod:
     needs: [tests-on-preprod]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print deploy-to-prod
         run: echo Deploying to prod 
+      - name: Clone python-greetings
+        run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+      - name: Stop python-greetings app
+        run: |
+          cd python-greetings
+          pm2 delete greetings-app-prod
   tests-on-prod:
     needs: [deploy-to-prod]
     runs-on: self-hosted
