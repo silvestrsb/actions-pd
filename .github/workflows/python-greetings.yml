@@ -35,10 +35,10 @@ jobs:
         run: echo Deploying to dev
       - name: Clone python-greetings
         run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
-      - name: Stop python-greetings app
+      - name: Restart python-greetings app
         run: |
           cd python-greetings
-          pm2 delete greetings-app-dev "&" EXIT /B 0
+          pm2 delete greetings-app-dev || : "&" pm2 start app.py --name greetings-app-dev -- --port 7001
   tests-on-dev:
     needs: [deploy-to-dev]
     runs-on: self-hosted
