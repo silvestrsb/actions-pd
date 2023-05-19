@@ -10,8 +10,6 @@ on:
 
 jobs:
   install-pip-deps:
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -19,8 +17,6 @@ jobs:
         run: echo install-pip-deps
   deploy-to-dev:
     needs: [install-pip-deps]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -28,8 +24,6 @@ jobs:
         run: echo deploy-to-dev
   tests-on-dev:
     needs: [install-pip-deps, deploy-to-dev]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -37,8 +31,6 @@ jobs:
         run: echo tests-on-dev   
   deploy-to-staging:
     needs: [install-pip-deps, deploy-to-dev, tests-on-dev]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -46,8 +38,6 @@ jobs:
         run: echo deploy-to-staging
   tests-on-staging:
     needs: [install-pip-deps, deploy-to-dev, tests-on-dev, deploy-to-staging]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -55,8 +45,6 @@ jobs:
         run: echo tests-on-staging
   deploy-to-preprod:
     needs: [install-pip-deps, deploy-to-dev, tests-on-dev, deploy-to-staging, tests-on-staging]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -64,8 +52,6 @@ jobs:
         run: echo deploy-to-preprod
   tests-on-preprod:
     needs: [install-pip-deps, deploy-to-dev, tests-on-dev, deploy-to-staging, tests-on-staging, deploy-to-preprod]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -73,8 +59,6 @@ jobs:
         run: echo tests-on-preprod
   deploy-to-prod:
     needs: [install-pip-deps, deploy-to-dev, tests-on-dev, deploy-to-staging, tests-on-staging, deploy-to-preprod, tests-on-preprod]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -82,8 +66,6 @@ jobs:
         run: echo deploy-to-prod  
   tests-on-prod:
     needs: [install-pip-deps, deploy-to-dev, tests-on-dev, deploy-to-staging, tests-on-staging, deploy-to-preprod, tests-on-preprod, deploy-to-prod]
-    strategy:
-      max-parallel: 1
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
