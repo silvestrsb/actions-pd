@@ -20,5 +20,47 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Print deploy-to-dev
-        run: echo deploy-to-dev  
+        run: echo deploy-to-dev
+  tests-on-dev:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print tests-on-dev
+        run: echo tests-on-dev   
+  deploy-to-staging:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print deploy-to-staging
+        run: echo deploy-to-staging
+  tests-on-staging:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print tests-on-staging
+        run: echo tests-on-staging
+  deploy-to-preprod:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print deploy-to-preprod
+        run: echo deploy-to-preprod
+  tests-on-preprod:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print tests-on-preprod
+        run: echo tests-on-preprod
+  deploy-to-prod:
+  runs-on: self-hosted
+  steps:
+    - uses: actions/checkout@v3
+    - name: Print deploy-to-prod
+      run: echo deploy-to-prod  
+  tests-on-prod:
+  runs-on: self-hosted
+  steps:
+    - uses: actions/checkout@v3
+    - name: Print tests-on-prod
+      run: echo tests-on-prod
   
