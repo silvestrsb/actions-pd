@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v3.5.2
       - name: Print install-pip-deps
         run: echo Installing pip dependencies
-      #- name: Clone python-greetings
-      #  run: clone https://github.com/mtararujs/python-greetings
+      - name: Clone python-greetings
+        run: git clone https://github.com/mtararujs/python-greetings
   deploy-to-dev:
     needs: [install-pip-deps]
     runs-on: self-hosted
