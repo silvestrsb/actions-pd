@@ -33,7 +33,7 @@ jobs:
       - name: Print deploy-to-dev
         run: echo Deploying to dev
       - name: Clone python-greetings
-        run: git clone https://github.com/mtararujs/python-greetings ./
+        run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
   tests-on-dev:
     needs: [deploy-to-dev]
     runs-on: self-hosted
