@@ -52,15 +52,15 @@ jobs:
       - name: Print tests-on-preprod
         run: echo tests-on-preprod
   deploy-to-prod:
-  runs-on: self-hosted
-  steps:
-    - uses: actions/checkout@v3
-    - name: Print deploy-to-prod
-      run: echo deploy-to-prod  
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print deploy-to-prod
+        run: echo deploy-to-prod  
   tests-on-prod:
-  runs-on: self-hosted
-  steps:
-    - uses: actions/checkout@v3
-    - name: Print tests-on-prod
-      run: echo tests-on-prod
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print tests-on-prod
+        run: echo tests-on-prod
   
