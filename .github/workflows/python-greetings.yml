@@ -1,7 +1,8 @@
 name: python-greetings
 
 defaults:
-  runs-on: self-hosted
+  run:
+    runs-on: self-hosted
 
 on:
   push:
