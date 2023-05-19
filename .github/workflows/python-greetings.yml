@@ -1,9 +1,5 @@
 name: python-greetings
 
-defaults:
-  run:
-    runs-on: self-hosted
-
 on:
   push:
     branches: [ "main" ]
