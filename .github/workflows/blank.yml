@@ -9,13 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  hello:
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      - name: Run a one-line script
+      - name: Print greeting
         run: echo Hello, world!
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+  node-version:
+    runs on: npm
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check node version
+        run: node --version
