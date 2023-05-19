@@ -17,8 +17,10 @@ jobs:
         run: echo Installing pip dependencies
       - name: Clone python-greetings
         run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+      - name: Change directory to python-greetings
+        run: cd python-greetings
       - name: Check current directory
-        run: cd python-greetings && dir
+        run: dir
   deploy-to-dev:
     needs: [install-pip-deps]
     runs-on: self-hosted
