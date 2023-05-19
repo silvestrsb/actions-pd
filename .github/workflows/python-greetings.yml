@@ -38,7 +38,7 @@ jobs:
       - name: Stop python-greetings app
         run: |
           cd python-greetings
-          pm2 delete greetings-app-dev & EXIT /B 0
+          pm2 delete greetings-app-dev "&" EXIT /B 0
   tests-on-dev:
     needs: [deploy-to-dev]
     runs-on: self-hosted
@@ -59,7 +59,7 @@ jobs:
       - name: Stop python-greetings app
         run: |
           cd python-greetings
-          pm2 delete greetings-app-staging & EXIT /B 0 
+          pm2 delete greetings-app-staging "&" EXIT /B 0 
   tests-on-staging:
     needs: [deploy-to-staging]
     runs-on: self-hosted
@@ -80,7 +80,7 @@ jobs:
       - name: Stop python-greetings app
         run: |
           cd python-greetings
-          pm2 delete greetings-app-preprod & EXIT /B 0
+          pm2 delete greetings-app-preprod "&" EXIT /B 0
   tests-on-preprod:
     needs: [deploy-to-preprod]
     runs-on: self-hosted
@@ -101,7 +101,7 @@ jobs:
       - name: Stop python-greetings app
         run: |
           cd python-greetings
-          pm2 delete greetings-app-prod & EXIT /B 0
+          pm2 delete greetings-app-prod "&" EXIT /B 0
   tests-on-prod:
     needs: [deploy-to-prod]
     runs-on: self-hosted
