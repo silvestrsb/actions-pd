@@ -29,21 +29,26 @@ jobs:
     needs: [install-pip-deps]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
+      - uses: ./.github/actions/deploy
       - name: Print deploy-to-dev
         run: echo Deploying to dev
+      - name: Clone python-greetings
+        run: git clone https://github.com/mtararujs/python-greetings ./
   tests-on-dev:
     needs: [deploy-to-dev]
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/tests
       - name: Print tests-on-dev
         run: echo Testing on dev   
   deploy-to-staging:
     needs: [tests-on-dev]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
+      - uses: ./.github/actions/deploy
       - name: Print deploy-to-staging
         run: echo Deploying to staging
   tests-on-staging:
@@ -51,13 +56,15 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/tests
       - name: Print tests-on-staging
         run: echo Testing on staging
   deploy-to-preprod:
     needs: [tests-on-staging]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
+      - uses: ./.github/actions/deploy
       - name: Print deploy-to-preprod
         run: echo Deploying to preprod
   tests-on-preprod:
@@ -65,13 +72,15 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/tests
       - name: Print tests-on-preprod
         run: echo Testing on preprod
   deploy-to-prod:
     needs: [tests-on-preprod]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
+      - uses: ./.github/actions/deploy
       - name: Print deploy-to-prod
         run: echo Deploying to prod 
   tests-on-prod:
@@ -79,6 +88,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/tests
       - name: Print tests-on-prod
         run: echo Testing on prod
   
