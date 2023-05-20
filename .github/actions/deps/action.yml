@@ -3,13 +3,17 @@ runs:
   steps:
     - name: Print install-pip-deps
       run: echo Installing pip dependencies
+      shell: cmd
     - name: Clone python-greetings
       run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+      shell: cmd
     - name: Check python-greetings directory
       run: |
         cd python-greetings
         dir
+      shell: cmd
     - name: Install pip dependencies
       run: |
         cd python-greetings
         pip install -r requirements.txt
+      shell: cmd
