@@ -56,7 +56,7 @@ jobs:
           npm install    
       - name: Run tests
         run: |
-          cd api-framework/tests/steps
+          cd api-framework/tests/scenarios
           dir
           npm run greetings greetings_dev
   deploy-to-staging:
