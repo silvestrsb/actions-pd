@@ -13,18 +13,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3.5.2
-      - name: Print install-pip-deps
-        run: echo Installing pip dependencies
-      - name: Clone python-greetings
-        run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
-      - name: Check python-greetings directory
-        run: |
-          cd python-greetings
-          dir
-      - name: Install pip dependencies
-        run: |
-          cd python-greetings
-          pip install -r requirements.txt
+      - uses: ./.github/actions/deps
   deploy-to-dev:
     needs: [install-pip-deps]
     runs-on: self-hosted
