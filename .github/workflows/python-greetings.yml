@@ -49,6 +49,13 @@ jobs:
         run: echo Testing on dev  
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Install npm
+        run: npm install    
+      - name: Run tests
+        run: |
+        cd api-framework
+        npm run greetings greetings_dev
+        
   deploy-to-staging:
     needs: [tests-on-dev]
     runs-on: self-hosted
@@ -73,6 +80,10 @@ jobs:
         run: echo Testing on staging
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Run tests
+        run: |
+        cd api-framework
+        npm run greetings greetings_staging
   deploy-to-preprod:
     needs: [tests-on-staging]
     runs-on: self-hosted
@@ -97,6 +108,10 @@ jobs:
         run: echo Testing on preprod
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Run tests
+        run: |
+        cd api-framework
+        npm run greetings greetings_preprod
   deploy-to-prod:
     needs: [tests-on-preprod]
     runs-on: self-hosted
@@ -121,4 +136,8 @@ jobs:
         run: echo Testing on prod
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Run tests
+        run: |
+        cd api-framework
+        npm run greetings greetings_prod
   
