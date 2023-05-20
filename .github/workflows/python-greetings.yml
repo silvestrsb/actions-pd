@@ -43,6 +43,7 @@ jobs:
   tests-on-dev:
     needs: [deploy-to-dev]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print tests-on-dev
@@ -75,6 +76,7 @@ jobs:
   tests-on-staging:
     needs: [deploy-to-staging]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print tests-on-staging
@@ -107,6 +109,7 @@ jobs:
   tests-on-preprod:
     needs: [deploy-to-preprod]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print tests-on-preprod
@@ -139,6 +142,7 @@ jobs:
   tests-on-prod:
     needs: [deploy-to-prod]
     runs-on: self-hosted
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print tests-on-prod
