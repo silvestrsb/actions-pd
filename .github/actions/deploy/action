@@ -1,0 +1,17 @@
+inputs:
+  port:
+    description: 'Specify port for running the app'
+  environment:
+    description: 'Specify the environment in which the app will run'
+runs:
+  using: "composite"
+  steps:
+   - name: Print deploy-to-{{ inputs.environment }}
+        run: echo Deploying to {{ inputs.environment }}
+      - name: Clone python-greetings
+        run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+      - name: Restart python-greetings app
+        run: |
+          cd python-greetings
+          pm2 delete --silent greetings-app-{{ inputs.environment }} "&" set "errorlevel=0"
+          pm2 start app.py --name greetings-app-{{ inputs.environment }} -- -- port {{ inputs.port }}
