@@ -55,7 +55,6 @@ jobs:
         run: |
         cd api-framework
         npm run greetings greetings_dev
-        
   deploy-to-staging:
     needs: [tests-on-dev]
     runs-on: self-hosted
