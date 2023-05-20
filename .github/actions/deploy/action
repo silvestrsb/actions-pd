@@ -8,10 +8,13 @@ runs:
   steps:
    - name: Print deploy-to-{{ inputs.environment }}
         run: echo Deploying to {{ inputs.environment }}
+        shell: cmd
       - name: Clone python-greetings
         run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
+        shell: cmd
       - name: Restart python-greetings app
         run: |
           cd python-greetings
           pm2 delete --silent greetings-app-{{ inputs.environment }} "&" set "errorlevel=0"
           pm2 start app.py --name greetings-app-{{ inputs.environment }} -- -- port {{ inputs.port }}
+        shell: cmd
