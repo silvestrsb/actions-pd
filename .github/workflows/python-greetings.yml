@@ -29,7 +29,6 @@ jobs:
     needs: [install-pip-deps]
     runs-on: self-hosted
     continue-on-error: true
-    clean: false
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Print deploy-to-dev
