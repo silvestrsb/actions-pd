@@ -20,7 +20,7 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v3.5.2
-      - uses: ./.github/actions/deploy/
+      - uses: C:/Users/Zenith/actions-pd/actions-runner/_work/actions-pd/actions-pd/.github/actions/deploy/
         with:
           port: 7001
           environment: 'dev'
