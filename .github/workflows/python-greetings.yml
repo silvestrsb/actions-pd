@@ -50,7 +50,9 @@ jobs:
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
       - name: Install npm
-        run: npm install    
+        run: |
+          cd api-framework
+          npm install    
       - name: Run tests
         run: |
           cd api-framework
@@ -79,6 +81,10 @@ jobs:
         run: echo Testing on staging
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Install npm
+        run: |
+          cd api-framework
+          npm install    
       - name: Run tests
         run: |
           cd api-framework
@@ -107,6 +113,10 @@ jobs:
         run: echo Testing on preprod
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Install npm
+        run: |
+          cd api-framework
+          npm install  
       - name: Run tests
         run: |
           cd api-framework
@@ -135,6 +145,10 @@ jobs:
         run: echo Testing on prod
       - name: Clone api framework
         run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
+      - name: Install npm
+        run: |
+          cd api-framework
+          npm install  
       - name: Run tests
         run: |
           cd api-framework
