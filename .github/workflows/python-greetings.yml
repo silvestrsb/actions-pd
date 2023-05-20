@@ -37,6 +37,7 @@ jobs:
         run: git clone https://github.com/mtararujs/python-greetings ./python-greetings
       - name: Restart python-greetings app
         run: |
+          npm instaall
           cd python-greetings
           pm2 delete --silent greetings-app-dev "&" set "errorlevel=0"
           pm2 start app.py --name greetings-app-dev --port=7001
