@@ -44,9 +44,11 @@ jobs:
     needs: [deploy-to-dev]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Print tests-on-dev
-        run: echo Testing on dev   
+        run: echo Testing on dev  
+      - name: Clone api framework
+        run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
   deploy-to-staging:
     needs: [tests-on-dev]
     runs-on: self-hosted
@@ -66,9 +68,11 @@ jobs:
     needs: [deploy-to-staging]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Print tests-on-staging
         run: echo Testing on staging
+      - name: Clone api framework
+        run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
   deploy-to-preprod:
     needs: [tests-on-staging]
     runs-on: self-hosted
@@ -88,9 +92,11 @@ jobs:
     needs: [deploy-to-preprod]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Print tests-on-preprod
         run: echo Testing on preprod
+      - name: Clone api framework
+        run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
   deploy-to-prod:
     needs: [tests-on-preprod]
     runs-on: self-hosted
@@ -110,7 +116,9 @@ jobs:
     needs: [deploy-to-prod]
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Print tests-on-prod
         run: echo Testing on prod
+      - name: Clone api framework
+        run: git clone https://github.com/mtararujs/course-js-api-framework  ./api-framework
   
