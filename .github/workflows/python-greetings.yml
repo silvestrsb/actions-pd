@@ -61,6 +61,7 @@ jobs:
         run: |
           cd python-greetings
           pm2 delete --silent greetings-app-staging "&" EXIT /B 0 
+          pm2 start app.py --name greetings-app-dev --port 7002
   tests-on-staging:
     needs: [deploy-to-staging]
     runs-on: self-hosted
@@ -82,6 +83,7 @@ jobs:
         run: |
           cd python-greetings
           pm2 delete --silent greetings-app-preprod "&" EXIT /B 0
+          pm2 start app.py --name greetings-app-dev --port 7003
   tests-on-preprod:
     needs: [deploy-to-preprod]
     runs-on: self-hosted
@@ -103,6 +105,7 @@ jobs:
         run: |
           cd python-greetings
           pm2 delete --silent greetings-app-prod "&" EXIT /B 0
+          pm2 start app.py --name greetings-app-dev --port 7004
   tests-on-prod:
     needs: [deploy-to-prod]
     runs-on: self-hosted
